@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+
+import Header from './components/Header';
+import HeroHeader from './components/HeroHeader';
+import MenuMobile from './components/Menu mobile';
+import GlobalStyles from './styles/GlobalStyles';
+import Collections from './components/Collections/index.';
+
+import { HiddenGames, Title, CardContainer } from './styles/appStyles';
+import image1 from './assets/image1.png';
+import user1 from './assets/user1.png';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [menuIsVisible, setMenuIsVisible] = useState(false);
+    return (
+        <>
+            <MenuMobile
+                menuIsVisible={menuIsVisible}
+                setMenuIsVisible={setMenuIsVisible}
+            />
+            <Header setMenuIsVisible={setMenuIsVisible} />
+            <HeroHeader />
+            <HiddenGames>
+                <Title>Top Collections</Title>
+                <CardContainer>
+                    <Collections
+                        imageUrl={image1}
+                        userUrl={user1}
+                        name="ZombieClub Token"
+                        username="ZombieLab"
+                        description="Zombie Lab is a collection of 10,000 animated NFTs. Each NFT is unique and resides on the Ethereum blockchain. Your Zombie Lab Club NFT will double as your club membership."
+                    />
+                    <Collections
+                        imageUrl={image1}
+                        userUrl={user1}
+                        name="ZombieClub Token"
+                        username="ZombieLab"
+                        description="Zombie Lab is a collection of 10,000 animated NFTs. Each NFT is unique and resides on the Ethereum blockchain. Your Zombie Lab Club NFT will double as your club membership."
+                    />
+                    <Collections
+                        imageUrl={image1}
+                        userUrl={user1}
+                        name="ZombieClub Token"
+                        username="ZombieLab"
+                        description="Zombie Lab is a collection of 10,000 animated NFTs. Each NFT is unique and resides on the Ethereum blockchain. Your Zombie Lab Club NFT will double as your club membership."
+                    />
+                </CardContainer>
+            </HiddenGames>
+            <GlobalStyles />
+        </>
+    );
 }
 
 export default App;
